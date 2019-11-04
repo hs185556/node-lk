@@ -1,0 +1,76 @@
+/*通用样式*/
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 微软雅黑;
+	font-size: 18px;
+}
+/*通用样式*/
+/*头部样式*/
+.header{
+	height: 150px;
+	border: 1px solid #ccc;
+	background-color: #f0f0f0;
+	text-align: center;
+}
+.header img{
+	width: 100px;
+}
+.header p{
+	margin-top: 10px;
+	color:darkred;
+	font-size:22px;
+}
+/*头部样式*/
+
+/*聊天界面样式*/
+.chatbox{
+	height: 300px;
+	overflow: auto;
+	padding: 0!important;
+}
+.chat{
+	list-style: none;
+	color:black;
+}
+.chat li{
+	border-bottom: 1px solid #eee;
+}
+.chat li span{
+	display: inline-block;
+	line-height: 50px;
+	background-color: #h0h0h0;
+	padding: 0 5px;
+	position: relative;
+	top:2px;
+}
+.chat .customer{
+	text-align: right;
+}
+.chat .customer span{
+	margin-right: 6px;
+}
+.chat .server{
+	text-align: left;
+}
+.chat .server span{
+	margin-left: 6px;
+}
+/*聊天界面样式*/
+
+/*发送框样式*/
+.send{
+	height: 54px;
+	background-color: #f0f0f0;
+	padding: 8px 15px;
+}
+.send .msg{
+	width: 60%;
+	padding: 5px;
+	border: 1px solid darkred;
+}
+.send .msg:focus {
+	outline:none;
+    border: 1px solid red;
+}
+

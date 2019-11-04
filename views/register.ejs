@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>撩课学堂-IT人的自我成长社区</title>
+	<script src="bs/js/jquery-1.9.1.min.js"></script>
+	<script src="bs/js/bootstrap.js"></script>
+	<link rel="stylesheet" href="bs/css/bootstrap.css" />
+	
+	<!--站点图标-->
+	<link rel="shortcut icon" type="image/x-icon" href="image/logo.ico" />
+	
+	<style type="text/css">
+		/*通用样式*/
+		*{
+			padding: 0;
+			margin: 0;
+			font-size: 18px;
+			font-family:微软雅黑;
+		}
+		/*头部样式*/
+		.navbar-top{
+			height: 70px;
+			background: #fff;
+		}
+		.navbar-top .navbar-header .navbar-brand{
+			display: inline-block;
+			height: 64px;
+			padding: 3px 15px;
+		}
+		.navbar-top .navbar-header .navbar-brand img{
+			height: 64px;
+		}
+		.navbar-top .navbar-collapse .navbar-right li a{
+			display: inline-block;
+			height: 64px;
+			padding: 3px 15px;
+			line-height: 64px;
+		}
+		.navbar-top .navbar-collapse .navbar-right .active1{
+			border-bottom: 2px solid red;
+		}
+		/*主内容区样式*/
+		.content{
+			margin-top: 70px;
+		}
+		.content .content-left{
+			border: 1px solid #ccc;
+			padding: 30px;
+		}
+		.content .content-left .form-title{
+			margin-bottom: 50px;
+			text-align: center;
+		}
+		.content .content-left .form-group input{
+			width: 100%;
+			margin: 20px auto;
+		}
+		/*左表单样式*/
+		/*右表单样式*/
+		
+		/*尾部导航栏样式*/
+		.nav-bottom{
+			height: 100px;
+		}
+		.nav-bottom p{
+			text-align: center;
+			line-height: 100px;
+		}
+	</style>
+<body>
+</head>
+	<div class="container-fulid">
+		
+		<!--头部导航栏-->
+		<nav class="navbar navbar-default navbar-top">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+		
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav_top" aria-expanded="false">
+					        <span class="sr-only">Toggle navigation</span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					      </button>
+					<a class="navbar-brand" href="/">
+						<img src="image/lk_logo.jpg" alt="" width="180" />
+					</a>
+				</div>
+		
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="nav_top">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="/reg" class="active1">注册</a>
+						</li>
+						<li>
+							<a href="/login">登录</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+		<!--头部导航栏-->
+		
+		<!--主内容区-->
+		<div class="container content">
+			<div class="row">
+				<!--左表单-->
+				<div class="col-xs-12 col-md-5 content-left">
+					<form method="post" action="/reg">
+						<h3 class="form-title">注册会员</h3>
+						<div class="form-group">
+							<input type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入用户名" name="username">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码" name="userpwd">
+						</div>
+						<button type="submit" class="btn btn-block btn-submit btn-danger">注册</button><br/>
+						<span>已有账号?</span><a href="/login">立即登录</a>
+					</form>				
+				</div>
+				<!--左表单-->
+				<!--右图片-->
+				<div class="col-md-7 col-lg-offset-1 col-lg-6 hidden-xs hidden-sm">
+					<img src="image/slide01_xs.jpg" class="img-responsive" alt="" />
+				</div>
+				<!--右图片-->
+			</div>			
+		</div>
+		<!--主内容区-->
+		
+		<!--尾部-->
+		<nav class="nav-bottom nav navbar-default navbar-fixed-bottom">
+				<p>copyright@2018-2028 by旋之华</p>
+		</nav>
+		<!--尾部-->
+	</div>	
+</body>
+</html>

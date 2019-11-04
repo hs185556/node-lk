@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>撩课学堂-IT人的自我成长社区</title>
+		<link rel="stylesheet" href="bs/css/bootstrap.css" />
+		<link rel="stylesheet" href="css/chat.css" />
+		<script src="bs/js/jquery-1.9.1.min.js"></script>
+		<script src="bs/js/bootstrap.js"></script>
+		<!--站点图标-->
+		<link rel="shortcut icon" type="image/x-icon" href="image/logo.ico" />
+	</head>
+
+	<body>
+		<!--头部-->
+		<div class="header">
+			<img src="image/heart.png" alt="" />
+			<p>小撩机器人(简化版)</p>
+			<!--实际开发过程中，这个就不止能发文字了，还可以发图片表情音频视频等等-->
+			<!--socket.io---一个快速可靠的实时引擎。它搭建一个快速通道在服务器和客户端之间。-->
+			<!--Socket.IO支持实时，双向和基于事件的通信。 它适用于每个平台，浏览器或设备，同样关注可靠性和速度。-->
+		</div>
+		<!--头部-->
+		<!--聊天列表-->
+		<div class="container-fluid chatbox">
+			<ul class="chat">
+				<!--<li class="customer">
+					<div class="container">
+						<span>我想吃饭</span>						
+						<img src="image/robot.jpg" width="52px" alt="" />
+					</div>
+				</li>
+				<li class="server">
+					<div class="container">
+						<img src="image/user.jpg" width="53px" alt="" />
+						<span>吃什么饭，敲代码去</span>
+					</div>
+				</li>-->
+			</ul>
+		</div>
+		<!--聊天界面-->
+		<!--输入框-->
+		<div class="send">
+			<input type="text" class='msg' placeholder="请输入聊天内容" autofocus/>
+			<botton class='btn btn-primary btn_send'>发送</botton>
+			<a href="/">
+				<botton class='btn btn-danger'>关闭</botton>
+			</a>
+		</div>
+		<!--输入框-->
+	</body>
+	<script src="/socket.io/socket.io.js"></script>
+	<!--不懂这个socket为什么是这么引入的-->
+	<script src="bs/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+		//客户端在这里设置的
+		//服务器端在www设置
+		$(() => {
+			//1.建立连接
+			let url = 'http://localhost:3000';
+			let socket = io.connect(url); //返回一个socket实例
+			//2.监听
+			socket.on('connect', () => { //连接成功
+				console.log('连接服务器成功');
+				//2.1打开通道
+				socket.emit('open');
+			});
+			//3.接收服务器返回的消息
+			socket.on('msg', (data) => {
+//				console.log(data);
+				dealWithMsg('server', data);
+			});
+			//4.添加用户输入的信息
+			$('.send .btn_send').click(() => {
+				addCustomerMsg();
+			})
+			//5.回车发送消息事件
+			$(window).on('keydown',(ev)=>{
+				if(ev.keyCode === 13){	
+				addCustomerMsg();
+				}
+			})
+			
+			function addCustomerMsg() {
+				//0.获取用户输入信息
+				let txt = $('.msg').val();
+				//1.提交消息给服务器
+				socket.emit("msg", txt);
+				//2.把消息显示在客户端
+				dealWithMsg('customer', txt);
+				//3.清空输入框
+				$('.msg').val('');
+			}
+		})
+
+		function dealWithMsg(className, data) {
+			if(className === 'customer') {
+				//1.创建li标签
+				let $liDom = "<li class='customer'> <div class='container'> <span>" + data + "</span> <img src='image/robot.jpg' width='52px' /> </div> </li>";
+				$('.chat').append($liDom);
+
+			} else if(className === 'server') {
+				//1.创建li标签
+				let $liDom = "<li class='server'> <div class='container'> <img src='image/user.jpg' width='53px' /> <span>" + data + "</span> </div> </li>";
+				$('.chat').append($liDom);
+
+			}
+			//2.让滚动条保持在底部
+			let scrollHeight = $('.chat')[0].scrollHeight;//获取到这个对象的第一个，或者说是jq对象转成js对象，才能调用scrollHeight
+			$('.chatbox').scrollTop(scrollHeight);//这里调用的是jq方法，不用[0]  这里的滚动条是设置在ul外面的盒子上的，所以要操作那个
+		};
+	</script>
+
+</html>
